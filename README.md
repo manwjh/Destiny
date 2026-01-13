@@ -7,6 +7,9 @@
 
 一个好玩的算命软件 - 不安慰你，只给结果的算卦器
 *A fun fortune-telling software - An oracle that doesn't comfort you, just gives results*
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/295ca87d-59f9-4ad6-abf7-5ba2c1eb91eb" />
+
+ooh shit!!
 
 **当前版本 | Current Version: v0.1.0** | [📋 更新日志 | Changelog](./CHANGELOG.md)
 
