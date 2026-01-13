@@ -1,0 +1,36 @@
+{
+  "version": "0.1.0",
+  "versionTag": "v0.1.0",
+  "releaseDate": "2026-01-13",
+  "projectName": "Destiny",
+  "projectNameCn": "算一卦",
+  "description": "A fun fortune-telling software - An oracle that doesn't comfort you, just gives results",
+  "descriptionCn": "一个好玩的算命软件 - 不安慰你，只给结果的算卦器",
+  "apiVersion": "v1",
+  "components": {
+    "frontend": {
+      "version": "0.1.0",
+      "framework": "React 18 + TypeScript",
+      "buildTool": "Vite"
+    },
+    "backend": {
+      "version": "0.1.0",
+      "framework": "FastAPI",
+      "python": "3.9+"
+    }
+  },
+  "features": {
+    "core": [
+      "Fortune telling engine",
+      "Multi-LLM support via LiteLLM",
+      "Bilingual support (Chinese/English)",
+      "Responsive design"
+    ],
+    "planned": [
+      "Enhanced visual hexagram display",
+      "User history tracking",
+      "Social media sharing",
+      "Performance monitoring"
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # 前端服务
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+    networks:
+      - destiny-network
+
+  # 后端服务（Python + LiteLLM）
+  backend:
+    build:
+      context: ./backend_python
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - REDIS_URL=redis://redis:6379
+      - DATABASE_URL=${DATABASE_URL:-postgresql://destiny:destiny@db:5432/destiny}
+      - LOG_LEVEL=INFO
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - ./backend_python/logs:/app/logs
+    networks:
+      - destiny-network
+    restart: unless-stopped
+
+  # Redis缓存服务
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - destiny-network
+    restart: unless-stopped
+
+  # PostgreSQL数据库（可选）
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=destiny
+      - POSTGRES_PASSWORD=destiny
+      - POSTGRES_DB=destiny
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - destiny-network
+    restart: unless-stopped
+
+networks:
+  destiny-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+  postgres-data:

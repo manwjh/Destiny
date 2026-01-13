@@ -1,0 +1,2 @@
+# This file keeps the logs directory in git
+# The logs directory itself is ignored, but we want to keep the directory structure

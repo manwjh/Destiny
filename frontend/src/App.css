@@ -1,0 +1,32 @@
+/* App.css - 《算一卦》专用样式 */
+
+/* 确保根元素不影响布局 */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* 平滑滚动 */
+* {
+  scroll-behavior: smooth;
+}
+
+/* 优化文本渲染 */
+body, button, input {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 禁止文本选择高亮（保持神秘感） */
+::selection {
+  background: rgba(142, 197, 252, 0.3);
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background: rgba(142, 197, 252, 0.3);
+  color: #FFFFFF;
+}
